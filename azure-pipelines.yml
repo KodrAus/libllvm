@@ -13,8 +13,8 @@ jobs:
   - script: ci/osx-x64.sh
   - task: PublishPipelineArtifact@0
     inputs:
-      artifactName: 'libLLVM.dylib'
-      targetPath: 'osx-x64/lib/libLLVM.dylib'
+      artifactName: 'llvm-osx-x64'
+      targetPath: 'osx-x64/lib'
 - job: Windows
   pool:
     vmImage: 'vs2017-win2016'
