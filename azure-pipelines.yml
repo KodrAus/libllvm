@@ -9,6 +9,10 @@ jobs:
     vmImage: 'macOS-10.13'
   steps:
   - script: ci/osx-x64.sh
+  - task: PublishPipelineArtifact@0
+    inputs:
+      artifactName: 'libLLVM.dylib'
+      targetPath: 'osx-x64/lib/libLLVM.dylib'
 - job: Windows
   pool:
     vmImage: 'vs2017-win2016'
