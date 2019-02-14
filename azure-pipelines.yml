@@ -7,9 +7,12 @@ jobs:
 # have a consistent source to work off
 - job: Setup
   pool:
-    vmImage: 'vs2017-win2016'
+    vmImage: 'ubuntu-16.04'
   steps:
-  - powershell: ci/llvm-src.ps1
+  # Get the commit hash we intend to build
+  - script: ci/llvm-src.sh
+
+  # Publish the hash as an artifact
   - script: mkdir llvm-src-tmp
   - script: mv llvm-commit llvm-src-tmp
   - task: PublishPipelineArtifact@0
