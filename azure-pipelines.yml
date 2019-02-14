@@ -2,12 +2,14 @@
 
 jobs:
 - job: Linux
+  timeoutInMinutes: 360
   pool:
     vmImage: 'ubuntu-16.04'
   steps:
   - script: echo hello from Linux
 
 - job: macOS
+  timeoutInMinutes: 360
   pool:
     vmImage: 'macOS-10.13'
   steps:
@@ -18,6 +20,7 @@ jobs:
       targetPath: 'osx-x64/lib'
 
 - job: Windows
+  timeoutInMinutes: 360
   pool:
     vmImage: 'vs2017-win2016'
   steps:
