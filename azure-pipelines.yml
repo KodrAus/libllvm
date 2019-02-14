@@ -82,7 +82,7 @@ jobs:
   # Build LLVM.dll
   - powershell: ci/win81-x64.ps1
 
-  # Add the OSX build artifacts
+  # Add the Windows build artifacts
   - task: PublishPipelineArtifact@0
     inputs:
       artifactName: 'llvm-win81-x64'
