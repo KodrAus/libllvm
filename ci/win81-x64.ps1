@@ -3,7 +3,7 @@ if (Test-Path llvm-win81-x64)
     Remove-Item -Recurse -Force llvm-win81-x64
 }
 
-if (-not Test-Path llvm-win81-x64)
+if (-not (Test-Path llvm-win81-x64))
 {
     ./ci/llvm-src.ps1
 }
