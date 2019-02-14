@@ -31,5 +31,6 @@ jobs:
   steps:
   - task: DownloadPipelineArtifact@0
     inputs:
+      artifactName: 'llvm-osx-x64'
       targetPath: $(System.DefaultWorkingDirectory)
   - script: ls
