@@ -1,31 +1,70 @@
 # pr: none
 
 jobs:
+
+# Fetch llvm source
+# We do this once so all subsequent steps
+# have a consistent source to work off
+- job: Setup
+  pool:
+    vmImage: 'vs2017-win2016'
+  steps:
+  - script: git clone -b release_60 --depth 1 https://github.com/llvm-mirror/llvm.git llvm-src
+  - task: PublishPipelineArtifact@0
+    inputs:
+      artifactName: 'llvm-src'
+      targetPath: 'llvm-src'
+
+# linux-x64 build of LLVM
+# produces libLLVM.so
 - job: Linux
   timeoutInMinutes: 360
   pool:
     vmImage: 'ubuntu-16.04'
+  dependsOn:
+  - Setup
   steps:
+  - task: DownloadPipelineArtifact@0
+    inputs:
+      artifactName: 'llvm-src'
+      targetPath: $(System.DefaultWorkingDirectory)/llvm-src
   - script: echo hello from Linux
 
+# osx-x64 build of LLVM
+# products libLLVM.dylib
 - job: macOS
   timeoutInMinutes: 360
   pool:
     vmImage: 'macOS-10.13'
+  dependsOn:
+  - Setup
   steps:
+  - task: DownloadPipelineArtifact@0
+    inputs:
+      artifactName: 'llvm-src'
+      targetPath: $(System.DefaultWorkingDirectory)/llvm-src
   - script: ci/osx-x64.sh
   - task: PublishPipelineArtifact@0
     inputs:
       artifactName: 'llvm-osx-x64'
-      targetPath: 'osx-x64/lib'
+      targetPath: 'llvm-osx-x64/lib'
 
+# win81-x64 build of LLVM
+# produces LLVM.dll
 - job: Windows
   timeoutInMinutes: 360
   pool:
     vmImage: 'vs2017-win2016'
+  dependsOn:
+  - Setup
   steps:
+  - task: DownloadPipelineArtifact@0
+    inputs:
+      artifactName: 'llvm-src'
+      targetPath: $(System.DefaultWorkingDirectory)/llvm-src
   - script: echo hello from Windows
 
+# Package the artifacts into a single nupkg
 - job: Package
   pool:
     vmImage: 'vs2017-win2016'
@@ -37,5 +76,5 @@ jobs:
   - task: DownloadPipelineArtifact@0
     inputs:
       artifactName: 'llvm-osx-x64'
-      targetPath: $(System.DefaultWorkingDirectory)/osx-x64
+      targetPath: $(System.DefaultWorkingDirectory)/llvm-osx-x64
   - script: ls
