@@ -14,6 +14,4 @@ pushd llvm-osx-x64
 cmake -DLLVM_OPTIMIZED_TABLEGEN=ON -DLLVM_LINK_LLVM_DYLIB=ON -DBUILD_SHARED_LIBS=OFF ../llvm-src
 make
 
-ls lib
-
 popd

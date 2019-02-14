@@ -58,10 +58,12 @@ jobs:
   - script: ci/osx-x64.sh
 
   # Add the OSX build artifacts
+  - script: mkdir llvm-osx-x64-tmp
+  - script: cp llvm-osx-x64/lib/libLLVM.dylib llvm-osx-x64-tmp
   - task: PublishPipelineArtifact@0
     inputs:
       artifactName: 'llvm-osx-x64'
-      targetPath: 'llvm-osx-x64/lib'
+      targetPath: 'llvm-osx-x64-tmp'
 
 # win81-x64 build of LLVM
 - job: Windows
@@ -83,10 +85,12 @@ jobs:
   - powershell: ci/win81-x64.ps1
 
   # Add the Windows build artifacts
+  - script: mkdir llvm-win81-x64-tmp
+  - script: cp llvm-win81-x64/lib/LLVM.dll llvm-win81-x64-tmp
   - task: PublishPipelineArtifact@0
     inputs:
       artifactName: 'llvm-win81-x64'
-      targetPath: 'llvm-win81-x64/lib'
+      targetPath: 'llvm-win81-x64-tmp'
 
 # Package the artifacts into a single nupkg
 - job: Package
