@@ -6,15 +6,17 @@ jobs:
     vmImage: 'ubuntu-16.04'
   steps:
   - script: echo hello from Linux
+
 - job: macOS
   pool:
     vmImage: 'macOS-10.13'
   steps:
   - script: ci/osx-x64.sh
-  - task: PublishPipelineArtifact@0
+  - task: PublishPipelineArtifact
     inputs:
       artifactName: 'llvm-osx-x64'
       targetPath: 'osx-x64/lib'
+
 - job: Windows
   pool:
     vmImage: 'vs2017-win2016'
@@ -29,8 +31,8 @@ jobs:
   - macOS
   - Windows
   steps:
-  - task: DownloadPipelineArtifact@0
+  - task: DownloadPipelineArtifact
     inputs:
       artifactName: 'llvm-osx-x64'
-      targetPath: $(System.DefaultWorkingDirectory)
+      targetPath: $(System.DefaultWorkingDirectory)/osx-x64
   - script: ls
