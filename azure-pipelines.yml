@@ -9,11 +9,11 @@ jobs:
   pool:
     vmImage: 'vs2017-win2016'
   steps:
-  - script: git clone -b release_60 --depth 1 https://github.com/llvm-mirror/llvm.git llvm-src
+  - powershell: ci/llvm-src.ps1
   - task: PublishPipelineArtifact@0
     inputs:
-      artifactName: 'llvm-src'
-      targetPath: 'llvm-src'
+      artifactName: 'llvm-commit'
+      targetPath: 'llvm-commit'
 
 # linux-x64 build of LLVM
 # produces libLLVM.so
@@ -26,8 +26,8 @@ jobs:
   steps:
   - task: DownloadPipelineArtifact@0
     inputs:
-      artifactName: 'llvm-src'
-      targetPath: $(System.DefaultWorkingDirectory)/llvm-src
+      artifactName: 'llvm-commit'
+      targetPath: $(System.DefaultWorkingDirectory)/llvm-commit
   - script: echo hello from Linux
 
 # osx-x64 build of LLVM
@@ -41,8 +41,8 @@ jobs:
   steps:
   - task: DownloadPipelineArtifact@0
     inputs:
-      artifactName: 'llvm-src'
-      targetPath: $(System.DefaultWorkingDirectory)/llvm-src
+      artifactName: 'llvm-commit'
+      targetPath: $(System.DefaultWorkingDirectory)/llvm-commit
   - script: ci/osx-x64.sh
   - task: PublishPipelineArtifact@0
     inputs:
@@ -60,8 +60,8 @@ jobs:
   steps:
   - task: DownloadPipelineArtifact@0
     inputs:
-      artifactName: 'llvm-src'
-      targetPath: $(System.DefaultWorkingDirectory)/llvm-src
+      artifactName: 'llvm-commit'
+      targetPath: $(System.DefaultWorkingDirectory)/llvm-commit
   - script: echo hello from Windows
 
 # Package the artifacts into a single nupkg
