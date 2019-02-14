@@ -10,10 +10,12 @@ jobs:
     vmImage: 'vs2017-win2016'
   steps:
   - powershell: ci/llvm-src.ps1
+  - script: mkdir llvm-commit-tmp
+  - script: mv llvm-commit llvm-commit-tmp
   - task: PublishPipelineArtifact@0
     inputs:
       artifactName: 'llvm-commit'
-      targetPath: 'llvm-commit'
+      targetPath: 'llvm-commit-tmp'
 
 # linux-x64 build of LLVM
 # produces libLLVM.so

@@ -11,10 +11,14 @@ Push-Location llvm-src
 
 if (Test-Path llvm-src)
 {
+    Write-Host "Checking out specific commit"
+
     & git fetch origin $(Get-Content ../llvm-commit) --depth 1
 }
 else
 {
+    Write-Host "Checking out latest commit"
+    
     & git fetch origin release_60 --depth 1
     (& git rev-parse origin/release_60) | Out-File -FilePath ../llvm-commit
 }
