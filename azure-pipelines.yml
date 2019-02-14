@@ -20,3 +20,16 @@ jobs:
     vmImage: 'vs2017-win2016'
   steps:
   - script: echo hello from Windows
+
+- job: Package
+  pool:
+    vmImage: 'vs2017-win2016'
+  dependsOn:
+  - Linux
+  - macOS
+  - Windows
+  steps:
+  - task: DownloadPipelineArtifact@0
+    inputs:
+      targetPath: $(System.DefaultWorkingDirectory)
+  - script: ls
