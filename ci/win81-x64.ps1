@@ -13,14 +13,13 @@ Push-Location llvm-win81-x64
 
 & cmake `
   -G"Visual Studio 15 2017" `
-  -DCMAKE_BUILD_TYPE=MinSizeRel \
   -DLLVM_INCLUDE_TESTS=OFF `
   -DLLVM_INCLUDE_BENCHMARKS=OFF `
   -DLLVM_INCLUDE_TOOLS=OFF `
   -DLLVM_OPTIMIZED_TABLEGEN=ON `
   ../llvm-src
-& cmake --build . --config Release
+& cmake --build . --config MinSizeRel
 
-ls Release/lib
+ls MinSizeRel/lib
 
 Pop-Location
