@@ -4,9 +4,7 @@ set -e
 
 if [ -d llvm-linux-x64 ]; then rm -r llvm-linux-x64; fi
 
-if [ ! -d llvm-src ]; then
-    ./ci/llvm-src.sh
-fi
+if [ ! -d llvm-src ]; then ./ci/llvm-src.sh; fi
 
 mkdir llvm-linux-x64
 pushd llvm-linux-x64

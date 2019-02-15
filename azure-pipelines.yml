@@ -95,12 +95,12 @@ jobs:
 
   # Add the Windows build artifacts
   # - script: mkdir llvm-win81-x64-tmp
-  # - script: cp llvm-win81-x64/lib/LLVM.dll llvm-win81-x64-tmp
+  # - script: cp llvm-win81-x64/Debug/lib/LLVM.dll llvm-win81-x64-tmp
   - task: PublishPipelineArtifact@0
     inputs:
       artifactName: 'llvm-win81-x64'
       # targetPath: 'llvm-win81-x64-tmp'
-      targetPath: 'llvm-win81-x64/lib'
+      targetPath: 'llvm-win81-x64/Debug/lib'
 
 # Package the artifacts into a single nupkg
 - job: Package
