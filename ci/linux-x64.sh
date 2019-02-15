@@ -18,6 +18,8 @@ cmake \
   ../llvm-src
 make
 
+cp lib/libLLVM-6.0.so lib/libLLVM.so
+
 ls lib
 
 popd
