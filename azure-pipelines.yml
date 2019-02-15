@@ -36,7 +36,16 @@ jobs:
   - script: mv llvm-src-tmp/* .
   - script: rm -r llvm-src-tmp
 
-  - script: echo hello from Linux
+  # Build libLLVM.so
+  - script: ci/linux-x64.sh
+
+  # Add the Linux build artifacts
+  - script: mkdir llvm-linux-x64-tmp
+  - script: cp llvm-linux-x64/lib/libLLVM.so llvm-linux-x64-tmp
+  - task: PublishPipelineArtifact@0
+    inputs:
+      artifactName: 'llvm-linux-x64'
+      targetPath: 'llvm-linux-x64-tmp'
 
 # osx-x64 build of LLVM
 - job: macOS
@@ -85,12 +94,13 @@ jobs:
   - powershell: ci/win81-x64.ps1
 
   # Add the Windows build artifacts
-  - script: mkdir llvm-win81-x64-tmp
-  - script: cp llvm-win81-x64/lib/LLVM.dll llvm-win81-x64-tmp
+  # - script: mkdir llvm-win81-x64-tmp
+  # - script: cp llvm-win81-x64/lib/LLVM.dll llvm-win81-x64-tmp
   - task: PublishPipelineArtifact@0
     inputs:
       artifactName: 'llvm-win81-x64'
-      targetPath: 'llvm-win81-x64-tmp'
+      # targetPath: 'llvm-win81-x64-tmp'
+      targetPath: 'llvm-win81-x64/lib'
 
 # Package the artifacts into a single nupkg
 - job: Package
@@ -103,10 +113,10 @@ jobs:
   steps:
   - task: DownloadPipelineArtifact@0
     inputs:
-      artifactName: 'llvm-osx-x64'
-      targetPath: $(System.DefaultWorkingDirectory)/llvm-osx-x64
+      artifactName: 'llvm-linux-x64'
+      targetPath: $(System.DefaultWorkingDirectory)/llvm-linux-x64
   - task: DownloadPipelineArtifact@0
     inputs:
-      artifactName: 'llvm-win81-x64'
-      targetPath: $(System.DefaultWorkingDirectory)/llvm-win81-x64
+      artifactName: 'llvm-osx-x64'
+      targetPath: $(System.DefaultWorkingDirectory)/llvm-osx-x64
   - script: ls
