@@ -2,12 +2,12 @@
 
 set -e
 
-if [ -d llvm-osx-x64 ]; then rm -r llvm-osx-x64; fi
+if [ -d llvm-linux-x64 ]; then rm -r llvm-linux-x64; fi
 
 if [ ! -d llvm-src ]; then ./ci/llvm-src.sh; fi
 
-mkdir llvm-osx-x64
-pushd llvm-osx-x64
+mkdir llvm-linux-x64
+pushd llvm-linux-x64
 
 cmake \
   -DLLVM_INCLUDE_TESTS=OFF \
@@ -17,6 +17,8 @@ cmake \
   -DBUILD_SHARED_LIBS=OFF \
   ../llvm-src
 make
+
+cp lib/libLLVM-6.0.so lib/libLLVM.so
 
 ls lib
 
