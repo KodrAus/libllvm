@@ -11,7 +11,14 @@ if (-not (Test-Path llvm-win81-x64))
 New-Item -ItemType Directory -Path llvm-win81-x64
 Push-Location llvm-win81-x64
 
-& cmake -G"Visual Studio 15 2017" -Thost=x64 -DLLVM_OPTIMIZED_TABLEGEN=ON ../llvm-src
+& cmake `
+  -G"Visual Studio 15 2017" `
+  -Thost=x64 `
+  -DLLVM_INCLUDE_TESTS=OFF `
+  -DLLVM_INCLUDE_BENCHMARKS=OFF `
+  -DLLVM_INCLUDE_TOOLS=OFF `
+  -DLLVM_OPTIMIZED_TABLEGEN=ON `
+  ../llvm-src
 & cmake --build .
 
 Pop-Location
