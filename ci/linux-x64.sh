@@ -10,6 +10,7 @@ mkdir llvm-linux-x64
 pushd llvm-linux-x64
 
 cmake \
+  -DCMAKE_BUILD_TYPE=MinSizeRel \
   -DLLVM_INCLUDE_TESTS=OFF \
   -DLLVM_INCLUDE_BENCHMARKS=OFF \
   -DLLVM_OPTIMIZED_TABLEGEN=ON \
