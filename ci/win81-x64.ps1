@@ -1,8 +1,3 @@
-Push-Location ci/win81-x64
-ls "C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\VC\Auxiliary\Build"
-./build.bat
-Pop-Location
-
 if (Test-Path llvm-win81-x64)
 {
     Remove-Item -Recurse -Force llvm-win81-x64
@@ -29,8 +24,8 @@ ls MinSizeRel/lib
 
 Pop-Location
 
-$srcDir = "$(pwd)/llvm-src"
-$buildDir = "$(pwd)/win81-x64"
+$env:LLVM_SRC_DIR = "$(pwd)/llvm-src"
+$env:LLVM_BUILD_DIR = "$(pwd)/win81-x64"
 
 Push-Location ci/win81-x64
 
