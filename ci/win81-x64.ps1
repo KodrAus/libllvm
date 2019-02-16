@@ -23,3 +23,14 @@ Push-Location llvm-win81-x64
 ls MinSizeRel/lib
 
 Pop-Location
+
+$srcDir = "$(pwd)/llvm-src"
+$buildDir = "$(pwd)/win81-x64"
+
+Push-Location ci/win81-x64
+
+& msbuild /p:Configuration=Release /p:Platform=Win32 /p:LLVM_SRC_DIR=$srcDir /p:LLVM_BUILD_DIR=$buildDir libLLVM.vcxproj
+
+cp Release/LLVM.dll $buildDir/MinSizeRel/lib
+
+Pop-Location
