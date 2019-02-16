@@ -1,5 +1,5 @@
 Push-Location ci/win81-x64
-ls "C:\Program Files (x86)\Microsoft Visual Studio\2017"
+ls "C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\VC\Auxiliary\Build"
 ./build.bat
 Pop-Location
 

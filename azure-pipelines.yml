@@ -83,7 +83,7 @@ jobs:
   - Setup
   steps:
   # Environment setup
-  - script: choco install visualstudio2017buildtools
+  - script: choco install visualstudio2017buildtools --add Microsoft.VisualStudio.Workload.VCTools --includeRecommended
   # Fetch the temp artifacts for the build
   - task: DownloadPipelineArtifact@0
     inputs:
