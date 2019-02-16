@@ -1,6 +1,6 @@
 Push-Location ci/win81-x64
 Invoke-WebRequest -Uri "https://download.visualstudio.microsoft.com/download/pr/f8db94a7-42dc-4413-b987-b21dcb0b1661/5e24cf2c187f46bde25c5515250fa9a0/vs_buildtools.exe" -OutFile vs_buildtools.exe
-./vs_buildtools.exe install --quiet
+./vs_buildtools.exe install --quiet --wait --norestart
 
 ls "C:\Program Files (x86)\Microsoft Visual Studio\2017"
 ./build.bat
