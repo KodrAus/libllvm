@@ -18,8 +18,8 @@ Push-Location llvm-win81-x64
   -DLLVM_INCLUDE_TOOLS=OFF `
   -DLLVM_OPTIMIZED_TABLEGEN=ON `
   ../llvm-src
-& cmake --build . --config Release
+& cmake --build . --config MinSizeRel
 
-ls Release/lib
+ls MinSizeRel/lib
 
 Pop-Location
