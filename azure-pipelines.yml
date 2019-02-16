@@ -82,6 +82,8 @@ jobs:
   dependsOn:
   - Setup
   steps:
+  # Environment setup
+  - script: choco install visualstudio2017buildtools
   # Fetch the temp artifacts for the build
   - task: DownloadPipelineArtifact@0
     inputs:
