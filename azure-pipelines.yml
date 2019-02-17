@@ -96,13 +96,12 @@ jobs:
   - powershell: ci/win81-x64.ps1
 
   # Add the Windows build artifacts
-  # - script: mkdir llvm-win81-x64-tmp
-  # - script: cp llvm-win81-x64/MinSizeRel/lib/LLVM.dll llvm-win81-x64-tmp
+  - script: mkdir llvm-win81-x64-tmp
+  - script: cp llvm-win81-x64/MinSizeRel/lib/LLVM.dll llvm-win81-x64-tmp
   - task: PublishPipelineArtifact@0
     inputs:
       artifactName: 'llvm-win81-x64'
-      # targetPath: 'llvm-win81-x64-tmp'
-      targetPath: 'llvm-win81-x64/MinSizeRel/lib'
+      targetPath: 'llvm-win81-x64-tmp'
 
 # Package the artifacts into a single nupkg
 - job: Package
@@ -121,4 +120,8 @@ jobs:
     inputs:
       artifactName: 'llvm-osx-x64'
       targetPath: $(System.DefaultWorkingDirectory)/llvm-osx-x64
+  - task: DownloadPipelineArtifact@0
+    inputs:
+      artifactName: 'llvm-win81-x64'
+      targetPath: $(System.DefaultWorkingDirectory)/llvm-win81-x64
   - script: ls

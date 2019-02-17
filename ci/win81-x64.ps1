@@ -25,11 +25,11 @@ ls MinSizeRel/lib
 Pop-Location
 
 $srcDir = "$(pwd)/llvm-src"
-$buildDir = "$(pwd)/win81-x64"
+$buildDir = "$(pwd)/llvm-win81-x64"
 
 Push-Location ci/win81-x64
 
 ./build.bat $srcDir $buildDir
-cp Release/LLVM.dll $buildDir/MinSizeRel/lib
+cp Release/libLLVM.dll $buildDir/MinSizeRel/lib/LLVM.dll
 
 Pop-Location
