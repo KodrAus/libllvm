@@ -13,13 +13,14 @@ Push-Location llvm-win81-x64
 
 & cmake `
   -G"MinGW Makefiles" `
+  -DCMAKE_SH="CMAKE_SH-NOTFOUND" `
   -DCMAKE_BUILD_TYPE=MinSizeRel `
   -DLLVM_INCLUDE_TESTS=OFF `
   -DLLVM_INCLUDE_BENCHMARKS=OFF `
   -DLLVM_INCLUDE_TOOLS=OFF `
   -DLLVM_OPTIMIZED_TABLEGEN=ON `
   ../llvm-src
-& make SHELL=cmd
+& cmake --build .
 
 ls lib
 
