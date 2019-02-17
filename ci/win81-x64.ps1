@@ -19,7 +19,7 @@ Push-Location llvm-win81-x64
   -DLLVM_INCLUDE_TOOLS=OFF `
   -DLLVM_OPTIMIZED_TABLEGEN=ON `
   ../llvm-src
-& cmake --build .
+& make SHELL=cmd
 
 ls lib
 
