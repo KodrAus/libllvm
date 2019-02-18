@@ -21,8 +21,6 @@ Push-Location llvm-win81-x64
   ../llvm-src
 & cmake --build . --config MinSizeRel
 
-ls lib
-
 Pop-Location
 
 $srcDir = "$(pwd)/llvm-src"
