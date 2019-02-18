@@ -12,16 +12,14 @@ New-Item -ItemType Directory -Path llvm-win81-x64
 Push-Location llvm-win81-x64
 
 & cmake `
-  -G"MinGW Makefiles" `
-  -DCMAKE_SH="CMAKE_SH-NOTFOUND" `
-  -DCMAKE_BUILD_TYPE=MinSizeRel `
+  -G"Visual Studio 15 2017" `
   -DLLVM_INCLUDE_TESTS=OFF `
   -DLLVM_INCLUDE_BENCHMARKS=OFF `
   -DLLVM_INCLUDE_TOOLS=OFF `
   -DLLVM_OPTIMIZED_TABLEGEN=ON `
-  -DLLVM_LINK_LLVM_DYLIB=ON `
+  -DBUILD_SHARED_LIBS=ON `
   ../llvm-src
-& cmake --build .
+& cmake --build . --config MinSizeRel
 
 ls lib
 
