@@ -18,7 +18,6 @@ Push-Location llvm-win81-x64
   -DLLVM_INCLUDE_BENCHMARKS=OFF `
   -DLLVM_INCLUDE_TOOLS=OFF `
   -DLLVM_OPTIMIZED_TABLEGEN=ON `
-  -DBUILD_SHARED_LIBS=ON `
   ../llvm-src
 & cmake --build . --config MinSizeRel
 
