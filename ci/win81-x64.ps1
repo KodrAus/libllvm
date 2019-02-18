@@ -30,7 +30,8 @@ $buildDir = "$(pwd)/llvm-win81-x64"
 
 Push-Location ci/win81-x64
 
-# ./build.bat $srcDir $buildDir
+./assemble.bat $srcDir $buildDir
+ls Release
 # cp Release/libLLVM.dll $buildDir/MinSizeRel/lib/LLVM.dll
 
 Pop-Location
