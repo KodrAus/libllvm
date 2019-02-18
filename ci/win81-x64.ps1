@@ -19,6 +19,7 @@ Push-Location llvm-win81-x64
   -DLLVM_INCLUDE_BENCHMARKS=OFF `
   -DLLVM_INCLUDE_TOOLS=OFF `
   -DLLVM_OPTIMIZED_TABLEGEN=ON `
+  -DLLVM_LINK_LLVM_DYLIB=ON `
   ../llvm-src
 & cmake --build .
 
