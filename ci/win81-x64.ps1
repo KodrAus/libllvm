@@ -12,7 +12,8 @@ New-Item -ItemType Directory -Path llvm-win81-x64
 Push-Location llvm-win81-x64
 
 & cmake `
-  -G"Visual Studio 15 2017" `
+  -G"Visual Studio 15 2017 Win64" `
+  -Thost=x64 `
   -DLLVM_INCLUDE_TESTS=OFF `
   -DLLVM_INCLUDE_BENCHMARKS=OFF `
   -DLLVM_INCLUDE_TOOLS=OFF `

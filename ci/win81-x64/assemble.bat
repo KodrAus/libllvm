@@ -1,10 +1,10 @@
 set srcdir=%1
 set builddir=%2
 
-set vcvars32="C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\VC\Auxiliary\Build\vcvars32.bat"
+set vcvarsall="C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\VC\Auxiliary\Build\vcvarsall.bat"
 
-if exist %vcvars32% (
-    @call %vcvars32%
+if exist %vcvarsall% (
+    @call %vcvarsall% amd64
 )
 
-msbuild /p:Configuration=Release /p:Platform=Win32 /p:LLVM_SRC_DIR=%srcdir% /p:LLVM_BUILD_DIR=%builddir% libLLVM.vcxproj
+msbuild /p:Configuration=Release /p:Platform=x64 /p:LLVM_SRC_DIR=%srcdir% /p:LLVM_BUILD_DIR=%builddir% libLLVM.vcxproj
