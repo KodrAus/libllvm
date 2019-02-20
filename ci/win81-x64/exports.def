@@ -752,12 +752,10 @@ LLVMOrcCreateLazyCompileCallback
 LLVMOrcDisposeInstance
 LLVMOrcDisposeMangledSymbol
 LLVMOrcDisposeSharedModuleRef
-LLVMOrcDisposeSharedObjectBufferRef
 LLVMOrcGetErrorMsg
 LLVMOrcGetMangledSymbol
 LLVMOrcGetSymbolAddress
 LLVMOrcMakeSharedModule
-LLVMOrcMakeSharedObjectBuffer
 LLVMOrcRemoveModule
 LLVMOrcSetIndirectStubPointer
 LLVMLinkInOrcMCJITReplacement
@@ -783,7 +781,6 @@ LLVMAddIndVarSimplifyPass
 LLVMAddInstructionCombiningPass
 LLVMAddJumpThreadingPass
 LLVMAddLICMPass
-LLVMAddLateCFGSimplificationPass
 LLVMAddLoopDeletionPass
 LLVMAddLoopIdiomPass
 LLVMAddLoopRerollPass

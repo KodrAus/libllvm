@@ -1,17 +1,17 @@
-if (Test-Path llvm-win81-x64)
-{
-    Remove-Item -Recurse -Force llvm-win81-x64
-}
-
 if (-not (Test-Path llvm-src))
 {
     ./ci/llvm-src.ps1
 }
 
+if (Test-Path llvm-win81-x64)
+{
+    Remove-Item -Recurse -Force llvm-win81-x64
+}
 New-Item -ItemType Directory -Path llvm-win81-x64
+
 Push-Location llvm-win81-x64
 
-& cmake `
+& cmake -v `
   -G"Visual Studio 15 2017 Win64" `
   -Thost=x64 `
   -DLLVM_INCLUDE_TESTS=OFF `
@@ -19,7 +19,6 @@ Push-Location llvm-win81-x64
   -DLLVM_INCLUDE_TOOLS=OFF `
   -DLLVM_OPTIMIZED_TABLEGEN=ON `
   ../llvm-src
-& cmake --build . --config MinSizeRel
 
 Pop-Location
 
@@ -28,8 +27,9 @@ $buildDir = "$(pwd)/llvm-win81-x64"
 
 Push-Location ci/win81-x64
 
+./build.bat $buildDir
 ./assemble.bat $srcDir $buildDir
-ls Release
-# cp Release/libLLVM.dll $buildDir/MinSizeRel/lib/LLVM.dll
+
+cp x64/MinSizeRel/libLLVM.dll $buildDir/MinSizeRel/lib/LLVM.dll
 
 Pop-Location

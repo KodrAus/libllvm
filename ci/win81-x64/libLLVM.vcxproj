@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
-    <ProjectConfiguration Include="Release|x64">
-      <Configuration>Release</Configuration>
+    <ProjectConfiguration Include="MinSizeRel|x64">
+      <Configuration>MinSizeRel</Configuration>
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
@@ -10,28 +10,28 @@
   <PropertyGroup Label="Globals">
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>libLLVM</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.15063.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
 
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
 
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v141</PlatformToolset>
+    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
 
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
 
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">
     <LinkIncremental>false</LinkIncremental>
   </PropertyGroup>
 
-  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">
     <ClCompile>
-      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
@@ -66,11 +66,13 @@
       <AdditionalDependencies>LLVMARMDesc.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalDependencies>LLVMARMDisassembler.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalDependencies>LLVMARMInfo.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>LLVMARMUtils.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalDependencies>LLVMAsmParser.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalDependencies>LLVMAsmPrinter.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalDependencies>LLVMBinaryFormat.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalDependencies>LLVMBitReader.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalDependencies>LLVMBitWriter.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>LLVMBPFAsmParser.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalDependencies>LLVMBPFAsmPrinter.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalDependencies>LLVMBPFCodeGen.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalDependencies>LLVMBPFDisassembler.lib;%(AdditionalDependencies)</AdditionalDependencies>
