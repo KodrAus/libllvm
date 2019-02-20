@@ -1,8 +1,7 @@
-if (Test-Path llvm-pkg)
+if (-not (Test-Path llvm-pkg))
 {
-    Remove-Item -Recurse -Force llvm-pkg
+    New-Item -ItemType Directory -Path llvm-pkg
 }
-New-Item -ItemType Directory -Path llvm-pkg
 
 $buildMeta = ""
 if (Test-Path llvm-version)
@@ -11,7 +10,7 @@ if (Test-Path llvm-version)
 }
 
 $prefix = (Select-String -Pattern "Version>([0-9]*\.[0-9]*\.[0-9]*)</Version" -Path libLLVM.csproj).Matches.Groups[1].Value
-$ts = [math]::Round((get-date).ticks / 10000000)
+$ts = [math]::Round(((get-date).ToUniversalTime()).ticks / 10000000)
 
 $version = "$prefix-dev.$ts"
 
