@@ -13,9 +13,10 @@ jobs:
   # Publish the hash as an artifact
   - script: mkdir llvm-src-tmp
   - script: mv llvm-commit llvm-src-tmp
+  - script: mv llvm-version llvm-src-tmp
   - task: PublishPipelineArtifact@0
     inputs:
-      artifactName: 'llvm-commit'
+      artifactName: 'llvm-src'
       targetPath: 'llvm-src-tmp'
 
 # linux-x64 build of LLVM
@@ -29,7 +30,7 @@ jobs:
   # Fetch the temp artifacts for the build
   - task: DownloadPipelineArtifact@0
     inputs:
-      artifactName: 'llvm-commit'
+      artifactName: 'llvm-src'
       targetPath: $(System.DefaultWorkingDirectory)/llvm-src-tmp
   - script: mv llvm-src-tmp/* .
   - script: rm -r llvm-src-tmp
@@ -56,7 +57,7 @@ jobs:
   # Fetch the temp artifacts for the build
   - task: DownloadPipelineArtifact@0
     inputs:
-      artifactName: 'llvm-commit'
+      artifactName: 'llvm-src'
       targetPath: $(System.DefaultWorkingDirectory)/llvm-src-tmp
   - script: mv llvm-src-tmp/* .
   - script: rm -r llvm-src-tmp
@@ -85,7 +86,7 @@ jobs:
   # Fetch the temp artifacts for the build
   - task: DownloadPipelineArtifact@0
     inputs:
-      artifactName: 'llvm-commit'
+      artifactName: 'llvm-src'
       targetPath: $(System.DefaultWorkingDirectory)/llvm-src-tmp
   - script: mv llvm-src-tmp/* .
   - script: rm -r llvm-src-tmp
@@ -110,6 +111,13 @@ jobs:
   - macOS
   - Windows
   steps:
+  - task: DownloadPipelineArtifact@0
+    inputs:
+      artifactName: 'llvm-src'
+      targetPath: $(System.DefaultWorkingDirectory)/llvm-src-tmp
+  - script: mv llvm-src-tmp/* .
+  - script: rm -r llvm-src-tmp
+
   # Get native libraries from previous steps
   - task: DownloadPipelineArtifact@0
     inputs:
