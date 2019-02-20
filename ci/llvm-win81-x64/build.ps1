@@ -25,7 +25,7 @@ Pop-Location
 $srcDir = "$(pwd)/llvm-src"
 $buildDir = "$(pwd)/llvm-win81-x64"
 
-Push-Location ci/win81-x64
+Push-Location ci/llvm-win81-x64
 
 ./llvm-build.bat $buildDir
 ./llvm-assemble.bat $srcDir $buildDir
