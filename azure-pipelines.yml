@@ -35,7 +35,7 @@ jobs:
   - script: rm -r llvm-src-tmp
 
   # Build libLLVM.so
-  - script: ci/linux-x64.sh
+  - script: ci/linux-x64/build.sh
 
   # Add the Linux build artifacts
   - script: mkdir llvm-linux-x64-tmp
@@ -62,7 +62,7 @@ jobs:
   - script: rm -r llvm-src-tmp
 
   # Build libLLVM.dylib
-  - script: ci/osx-x64.sh
+  - script: ci/osx-x64/build.sh
 
   # Add the OSX build artifacts
   - script: mkdir llvm-osx-x64-tmp
