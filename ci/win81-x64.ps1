@@ -30,6 +30,6 @@ Push-Location ci/win81-x64
 ./build.bat $buildDir
 ./assemble.bat $srcDir $buildDir
 
-cp x64/MinSizeRel/libLLVM.dll $buildDir/MinSizeRel/lib/LLVM.dll
+cp x64/MinSizeRel/libLLVM.dll $buildDir/LLVM.dll
 
 Pop-Location

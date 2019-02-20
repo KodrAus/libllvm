@@ -2,11 +2,11 @@
 
 set -e
 
-if [ -d llvm-osx-x64 ]; then rm -r llvm-osx-x64; fi
-
 if [ ! -d llvm-src ]; then ./ci/llvm-src.sh; fi
 
+if [ -d llvm-osx-x64 ]; then rm -r llvm-osx-x64; fi
 mkdir llvm-osx-x64
+
 pushd llvm-osx-x64
 
 cmake \
@@ -17,5 +17,7 @@ cmake \
   -DLLVM_LINK_LLVM_DYLIB=ON \
   ../llvm-src
 make
+
+cp lib/libLLVM.dylib libLLVM.dylib
 
 popd

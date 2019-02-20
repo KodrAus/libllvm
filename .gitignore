@@ -1,1 +1,3 @@
 /llvm-*
+/obj
+/bin
