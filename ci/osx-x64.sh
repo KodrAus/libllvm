@@ -9,7 +9,7 @@ if [ ! -d llvm-src ]; then ./ci/llvm-src.sh; fi
 mkdir llvm-osx-x64
 pushd llvm-osx-x64
 
-cmake -v \
+cmake \
   -DCMAKE_BUILD_TYPE=MinSizeRel \
   -DLLVM_INCLUDE_TESTS=OFF \
   -DLLVM_INCLUDE_BENCHMARKS=OFF \

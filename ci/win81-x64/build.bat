@@ -6,4 +6,4 @@ if exist %vcvars% (
     @call %vcvars%
 )
 
-cmake --build %builddir% --config MinSizeRel -v
+cmake --build %builddir% --config MinSizeRel
