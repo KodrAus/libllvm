@@ -1,5 +1,3 @@
-# pr: none
-
 jobs:
 
 # Fetch llvm source
@@ -93,7 +91,7 @@ jobs:
   - script: rm -r llvm-src-tmp
 
   # Build LLVM.dll
-  - powershell: ci/win81-x64.ps1
+  - powershell: ci/win81-x64/build.ps1
 
   # Add the Windows build artifacts
   - script: mkdir llvm-win81-x64-tmp
