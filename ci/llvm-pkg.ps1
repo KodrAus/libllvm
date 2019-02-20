@@ -4,7 +4,7 @@ if (Test-Path llvm-pkg)
 }
 New-Item -ItemType Directory -Path llvm-pkg
 
-$prefix = "6.0.0"
+$prefix = "0.0.0"
 if (Test-Path llvm-version)
 {
     $prefix = cat llvm-version
