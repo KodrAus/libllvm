@@ -4,7 +4,13 @@ if (Test-Path llvm-pkg)
 }
 New-Item -ItemType Directory -Path llvm-pkg
 
-$version = "6.0.0-dev-$([math]::Round((get-date).ticks / 10000000))"
+$prefix = "0.0.0"
+if (Test-Path llvm-version)
+{
+    $prefix = cat llvm-version
+}
+
+$version = "$prefix-dev-$([math]::Round((get-date).ticks / 10000000))"
 
 & dotnet restore
 & dotnet pack --no-build /p:Version=$version
