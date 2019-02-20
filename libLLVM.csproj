@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard1.3</TargetFramework>
+    <IncludeBuildOutput>false</IncludeBuildOutput>
+    <Title>libLLVM</Title>
+    <Version>6.0.0</Version>
+    <VersionSuffix>dev</VersionSuffix>
+    <PackageVersion>$(Version)-$(VersionSuffix)</PackageVersion>
+    <Description>The LLVM Project is a collection of modular and reusable compiler and toolchain technologies.</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="llvm-osx-x64/libLLVM.dylib" Pack="true" PackagePath="runtimes/osx-x64/native" />
+    <Content Include="llvm-linux-x64/libLLVM.so" Pack="true" PackagePath="runtimes/linux-x64/native" />
+    <Content Include="llvm-win81-x64/LLVM.dll" Pack="true" PackagePath="runtimes/win81-x64/native" />
+  </ItemGroup>
+
+</Project>
