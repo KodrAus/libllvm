@@ -35,7 +35,7 @@ jobs:
   - script: rm -r llvm-src-tmp
 
   # Build libLLVM.so
-  - script: ci/linux-x64/build.sh
+  - script: ci/llvm-linux-x64/build.sh
 
   # Add the Linux build artifacts
   - script: mkdir llvm-linux-x64-tmp
@@ -62,7 +62,7 @@ jobs:
   - script: rm -r llvm-src-tmp
 
   # Build libLLVM.dylib
-  - script: ci/osx-x64/build.sh
+  - script: ci/llvm-osx-x64/build.sh
 
   # Add the OSX build artifacts
   - script: mkdir llvm-osx-x64-tmp
@@ -91,7 +91,7 @@ jobs:
   - script: rm -r llvm-src-tmp
 
   # Build LLVM.dll
-  - powershell: ci/win81-x64/build.ps1
+  - powershell: ci/llvm-win81-x64/build.ps1
 
   # Add the Windows build artifacts
   - script: mkdir llvm-win81-x64-tmp
@@ -125,7 +125,7 @@ jobs:
       targetPath: $(System.DefaultWorkingDirectory)/llvm-win81-x64
 
   # Package a nupkg
-  - powershell: ci/pack.ps1
+  - powershell: ci/llvm-pkg.ps1
 
   # Publish the nupkg as an artifact
   - task: PublishPipelineArtifact@0
