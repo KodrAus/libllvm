@@ -8,7 +8,7 @@ jobs:
     vmImage: 'ubuntu-16.04'
   steps:
   # Get the commit hash we intend to build
-  - script: ci/llvm-src.sh
+  - powershell: ci/llvm-src.ps1
 
   # Publish the hash as an artifact
   - script: mkdir llvm-src-tmp
@@ -36,7 +36,7 @@ jobs:
   - script: rm -r llvm-src-tmp
 
   # Build libLLVM.so
-  - script: ci/llvm-linux-x64/build.sh
+  - powershell: ci/llvm-linux-x64/build.ps1
 
   # Add the Linux build artifacts
   - script: mkdir llvm-linux-x64-tmp
@@ -63,7 +63,7 @@ jobs:
   - script: rm -r llvm-src-tmp
 
   # Build libLLVM.dylib
-  - script: ci/llvm-osx-x64/build.sh
+  - powershell: ci/llvm-osx-x64/build.ps1
 
   # Add the OSX build artifacts
   - script: mkdir llvm-osx-x64-tmp
