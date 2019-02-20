@@ -4,9 +4,9 @@ if (Test-Path llvm-pkg)
 }
 New-Item -ItemType Directory -Path llvm-pkg
 
-$ts = [math]::Round((get-date).ticks / 10000000)
+$version = "6.0.0-dev-$([math]::Round((get-date).ticks / 10000000))"
 
 & dotnet restore
-& dotnet pack --no-build --version-suffix "dev-$ts"
+& dotnet pack --no-build /p:Version=$version
 
-cp "bin/Debug/libLLVM.6.0.0-dev-$ts.nupkg" llvm-pkg
+cp "bin/Debug/libLLVM.$version.nupkg" llvm-pkg
