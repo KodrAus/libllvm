@@ -18,6 +18,4 @@ cmake \
   ../llvm-src
 make
 
-ls lib
-
 popd
