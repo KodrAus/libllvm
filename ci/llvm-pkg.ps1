@@ -27,3 +27,10 @@ $packLinuxx64 = Test-Path llvm-linux-x64
     /p:Pack-Linux-x64=$packLinuxx64
 
 cp "bin/Debug/libLLVM.$version.nupkg" llvm-pkg
+
+if ($env:LIBLLVM_PUBLISH -eq "pkg-publish" -or $env:LIBLLVM_PUBLISH -eq "1")
+{
+    & dotnet nuget push llvm-pkg/libLLVM.$version.nupkg `
+        -s $env:LIBLLVM_NUGET_FEED `
+        -k $env:LIBLLVM_NUGET_KEY
+}

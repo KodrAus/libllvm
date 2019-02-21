@@ -134,6 +134,10 @@ jobs:
 
   # Package a nupkg
   - powershell: ci/llvm-pkg.ps1
+    env:
+      LIBLLVM_PUBLISH: $(Build.SourceBranchName)
+      LIBLLVM_NUGET_FEED: $(feedzio.url)
+      LIBLLVM_NUGET_KEY: $(feedzio.apiKey)
 
   # Publish the nupkg as an artifact
   - task: PublishPipelineArtifact@0
