@@ -107,9 +107,9 @@ jobs:
   pool:
     vmImage: 'vs2017-win2016'
   dependsOn:
-  - Linux
-  - macOS
-  - Windows
+  - LinuxBuild
+  - OSXBuild
+  - WindowsBuild
   steps:
   - task: DownloadPipelineArtifact@0
     inputs:
