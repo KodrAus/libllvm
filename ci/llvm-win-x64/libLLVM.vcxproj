@@ -172,13 +172,12 @@
       <AdditionalDependencies>LLVMXCoreDisassembler.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalDependencies>LLVMXCoreInfo.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>$(LLVM_BUILD_DIR)\MinSizeRel\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <ModuleDefinitionFile>exports.def</ModuleDefinitionFile>
+      <ModuleDefinitionFile>EXPORTS.def</ModuleDefinitionFile>
     </Link>
   </ItemDefinitionGroup>
 
   <ItemGroup>
     <ClCompile Include="dllmain.cpp" />
-    <ClCompile Include="LLVMSharp.cpp" />
   </ItemGroup>
 
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

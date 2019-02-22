@@ -7,3 +7,6 @@ if exist %vcvars% (
 )
 
 cmake --build %builddir% --config MinSizeRel
+
+lib /OUT:%builddir%\MinSizeRel\lib\LLVM.lib %builddir%\MinSizeRel\lib\LLVM*.lib
+dumpbin /linkermember:1 %builddir%\MinSizeRel\lib\LLVM.lib > raw-exports

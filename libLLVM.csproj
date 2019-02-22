@@ -10,7 +10,7 @@
 
     <Pack-OSX-x64>true</Pack-OSX-x64>
     <Pack-Linux-x64>true</Pack-Linux-x64>
-    <Pack-Win81-x64>true</Pack-Win81-x64>
+    <Pack-Win-x64>true</Pack-Win-x64>
   </PropertyGroup>
 
   <ItemGroup Condition="$(Pack-OSX-x64) == 'true'">
@@ -21,8 +21,8 @@
     <Content Include="llvm-linux-x64/libLLVM.so" Pack="true" PackagePath="runtimes/linux-x64/native" />
   </ItemGroup>
 
-  <ItemGroup Condition="$(Pack-Win81-x64) == 'true'">
-    <Content Include="llvm-win81-x64/LLVM.dll" Pack="true" PackagePath="runtimes/win81-x64/native" />
+  <ItemGroup Condition="$(Pack-Win-x64) == 'true'">
+    <Content Include="llvm-win-x64/LLVM.dll" Pack="true" PackagePath="runtimes/win-x64/native" />
   </ItemGroup>
 
 </Project>
