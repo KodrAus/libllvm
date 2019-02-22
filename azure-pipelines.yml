@@ -73,7 +73,7 @@ jobs:
       artifactName: 'llvm-osx-x64'
       targetPath: 'llvm-osx-x64-tmp'
 
-# win81-x64 build of LLVM
+# win-x64 build of LLVM
 - job: Windows
   timeoutInMinutes: 360
   pool:
@@ -92,15 +92,15 @@ jobs:
   - script: rm -r llvm-src-tmp
 
   # Build LLVM.dll
-  - powershell: ci/llvm-win81-x64/build.ps1
+  - powershell: ci/llvm-win-x64/build.ps1
 
   # Add the Windows build artifacts
-  - script: mkdir llvm-win81-x64-tmp
-  - script: cp llvm-win81-x64/LLVM.dll llvm-win81-x64-tmp
+  - script: mkdir llvm-win-x64-tmp
+  - script: cp llvm-win-x64/LLVM.dll llvm-win-x64-tmp
   - task: PublishPipelineArtifact@0
     inputs:
-      artifactName: 'llvm-win81-x64'
-      targetPath: 'llvm-win81-x64-tmp'
+      artifactName: 'llvm-win-x64'
+      targetPath: 'llvm-win-x64-tmp'
 
 # Package the artifacts into a single nupkg
 - job: Package
@@ -129,8 +129,8 @@ jobs:
       targetPath: $(System.DefaultWorkingDirectory)/llvm-osx-x64
   - task: DownloadPipelineArtifact@0
     inputs:
-      artifactName: 'llvm-win81-x64'
-      targetPath: $(System.DefaultWorkingDirectory)/llvm-win81-x64
+      artifactName: 'llvm-win-x64'
+      targetPath: $(System.DefaultWorkingDirectory)/llvm-win-x64
 
   # Package a nupkg
   - powershell: ci/llvm-pkg.ps1

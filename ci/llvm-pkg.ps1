@@ -15,7 +15,7 @@ $ts = [math]::Round(((get-date).ToUniversalTime()).ticks / 10000000)
 $version = "$prefix-dev.$ts"
 
 $packOSXx64 = Test-Path llvm-osx-x64
-$packWin81x64 = Test-Path llvm-win81-x64
+$packWinx64 = Test-Path llvm-win-x64
 $packLinuxx64 = Test-Path llvm-linux-x64
 
 & dotnet restore
@@ -23,7 +23,7 @@ $packLinuxx64 = Test-Path llvm-linux-x64
     --no-build `
     /p:Version="$($version)$buildMeta" `
     /p:Pack-OSX-x64=$packOSXx64 `
-    /p:Pack-Win81-x64=$packWin81x64 `
+    /p:Pack-Win-x64=$packWinx64 `
     /p:Pack-Linux-x64=$packLinuxx64
 
 cp "bin/Debug/libLLVM.$version.nupkg" llvm-pkg

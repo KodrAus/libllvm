@@ -9,7 +9,7 @@ if ($IsLinux) {
 }
 
 if ($IsWindows) {
-    ./ci/llvm-win81-x64/build.ps1
+    ./ci/llvm-win-x64/build.ps1
 }
 
 ./ci/llvm-pkg.ps1
