@@ -4,6 +4,7 @@
     <TargetFramework>netstandard1.3</TargetFramework>
     <IncludeBuildOutput>false</IncludeBuildOutput>
     <Title>libLLVM</Title>
+    <!-- NOTE: Don't forget to update readme references that use this version when changing it -->
     <Version>6.0.0</Version>
     <Description>The LLVM Project is a collection of modular and reusable compiler and toolchain technologies.</Description>
 
