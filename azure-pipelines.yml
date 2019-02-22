@@ -20,7 +20,7 @@ jobs:
       targetPath: 'llvm-src-tmp'
 
 # linux-x64 build of LLVM
-- job: Linux
+- job: LinuxBuild
   timeoutInMinutes: 360
   pool:
     vmImage: 'ubuntu-16.04'
@@ -47,7 +47,7 @@ jobs:
       targetPath: 'llvm-linux-x64-tmp'
 
 # osx-x64 build of LLVM
-- job: macOS
+- job: OSXBuild
   timeoutInMinutes: 360
   pool:
     vmImage: 'macOS-10.13'
@@ -74,7 +74,7 @@ jobs:
       targetPath: 'llvm-osx-x64-tmp'
 
 # win-x64 build of LLVM
-- job: Windows
+- job: WindowsBuild
   timeoutInMinutes: 360
   pool:
     vmImage: 'vs2017-win2016'
@@ -107,9 +107,9 @@ jobs:
   pool:
     vmImage: 'vs2017-win2016'
   dependsOn:
-  - Linux
-  - macOS
-  - Windows
+  - LinuxBuild
+  - OSXBuild
+  - WindowsBuild
   steps:
   - task: DownloadPipelineArtifact@0
     inputs:
@@ -144,3 +144,48 @@ jobs:
     inputs:
       artifactName: 'llvm-pkg'
       targetPath: 'llvm-pkg'
+
+# linux-x64 test for the NuGet package
+- job: LinuxTest
+  pool:
+    vmImage: 'ubuntu-16.04'
+  dependsOn:
+  - Package
+  steps:
+  - task: DownloadPipelineArtifact@0
+    inputs:
+      artifactName: 'llvm-pkg'
+      targetPath: $(System.DefaultWorkingDirectory)/llvm-pkg
+
+  # Run tests
+  - powershell: ci/test.ps1
+
+# osx-x64 test for the NuGet package
+- job: OSXTest
+  pool:
+    vmImage: 'macOS-10.13'
+  dependsOn:
+  - Package
+  steps:
+  - task: DownloadPipelineArtifact@0
+    inputs:
+      artifactName: 'llvm-pkg'
+      targetPath: $(System.DefaultWorkingDirectory)/llvm-pkg
+
+  # Run tests
+  - powershell: ci/test.ps1
+
+# win-x64 test for the NuGet package
+- job: WindowsTest
+  pool:
+    vmImage: 'vs2017-win2016'
+  dependsOn:
+  - Package
+  steps:
+  - task: DownloadPipelineArtifact@0
+    inputs:
+      artifactName: 'llvm-pkg'
+      targetPath: $(System.DefaultWorkingDirectory)/llvm-pkg
+
+  # Run tests
+  - powershell: ci/test.ps1

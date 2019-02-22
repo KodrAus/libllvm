@@ -13,3 +13,4 @@ if ($IsWindows) {
 }
 
 ./ci/llvm-pkg.ps1
+./ci/test.ps1
