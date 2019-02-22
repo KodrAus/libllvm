@@ -2,7 +2,21 @@
 
 Continuous builds of [LLVM](http://llvm.org/) for various platforms, packaged for consumption in .NET.
 
-Build artifacts are published in [Azure Pipelines](https://dev.azure.com/kodraus/libllvm/_build/latest?definitionId=1&branchName=master).
+## Getting started
+
+Builds from the `master` branch are published on [`feedz.io`](https://feedz.io/org/kodraus/repository/libllvm/packages/libLLVM).
+
+Add the `feedz.io` NuGet feed to a [`nuget.conf` file](https://docs.microsoft.com/en-us/nuget/reference/nuget-config-file) in your project:
+
+```xml
+<add key="libllvm.feedz.io" value="https://f.feedz.io/kodraus/libllvm/nuget" />
+```
+
+Add `libLLVM` as a package reference to your `csproj`:
+
+```xml
+<PackageReference Include="libLLVM" Version="6.0.0-*" />
+```
 
 ## Supported LLVM versions
 
