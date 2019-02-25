@@ -1,4 +1,4 @@
-# `libLLVM` [![Build Status](https://dev.azure.com/kodraus/libllvm/_apis/build/status/KodrAus.libllvm?branchName=master)](https://dev.azure.com/kodraus/libllvm/_build/latest?definitionId=1&branchName=master)
+# `libLLVM` [![Build Status](https://dev.azure.com/kodraus/libllvm/_apis/build/status/KodrAus.libllvm?branchName=master)](https://dev.azure.com/kodraus/libllvm/_build/latest?definitionId=1&branchName=master) ![Latest Build](https://img.shields.io/endpoint.svg?url=https%3A%2F%2Ff.feedz.io%2Fkodraus%2Flibllvm%2Fshield%2FlibLLVM%2Flatest)
 
 Continuous builds of [LLVM](http://llvm.org/) for various platforms, packaged for consumption in .NET.
 
