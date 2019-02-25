@@ -13,6 +13,11 @@
     <Pack-Win-x64>true</Pack-Win-x64>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Content Include="llvm-commit" Pack="true" PackagePath="build-meta" />
+    <Content Include="llvm-version" Pack="true" PackagePath="build-meta" />
+  </ItemGroup>
+
   <ItemGroup Condition="$(Pack-OSX-x64) == 'true'">
     <Content Include="llvm-osx-x64/libLLVM.dylib" Pack="true" PackagePath="runtimes/osx-x64/native" />
   </ItemGroup>
